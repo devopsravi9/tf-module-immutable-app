@@ -20,5 +20,13 @@ resource "aws_launch_template" "launch_template" {
     }
   }
 
+  tag_specifications {
+    resource_type = "spot-instances-request"
+
+    tags = {
+      Name = local.TAG_PREFIX
+    }
+  }
+
   //user_data = filebase64("${path.module}/example.sh")
 }
