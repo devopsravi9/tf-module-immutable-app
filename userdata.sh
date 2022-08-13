@@ -7,7 +7,7 @@ if [ -f /etc/nginx/default.d/roboshop.conf ]; then
   exit
 fi
 MEM=$(echo $(free -m  | grep ^Mem | awk '{print $2}')*0.8 |bc | awk -F . '{print $1}')
-sed -i -e "s/ENV/${ENV}/" -e "s/DOCDB_ENDPOINT/${DOCDB_ENDPOINT}/" -e "s/DOCDB_USER/${DOCDB_USER}/" -e "s/DOCDB_PASS/${DOCDB_PASS}/" -e "s/RABBITMQ_USER_PASSWORD/${RABBITMQ_USER_PASSWORD}/" -e "/java/ s/MEM/$MEM/" -e "s/MYSQL_ENDPOINT/${MYSQL_ENDPOINT}/" -e "s/REDIS_ENDPOINT/${REDDIS_ENDPOINT}/"  /etc/systemd/system/${COMPONENT}.service /etc/filebeat/filebeat.yml
+sed -i -e "s/ENV/${ENV}/" -e "s/DOCDB_ENDPOINT/${DOCDB_ENDPOINT}/" -e "s/DOCDB_USER/${DOCDB_USER}/" -e "s/DOCDB_PASS/${DOCDB_PASS}/" -e "s/RABBITMQ_USER_PASSWORD/${RABBITMQ_USER_PASSWORD}/" -e "/java/ s/MEM/$MEM/" -e "s/MYSQL_ENDPOINT/${MYSQL_ENDPOINT}/" -e "s/REDDIS_ENDPOINT/${REDDIS_ENDPOINT}/"  /etc/systemd/system/${COMPONENT}.service /etc/filebeat/filebeat.yml
 
 systemctl daemon-reload
 systemctl restart ${COMPONENT}
