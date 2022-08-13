@@ -36,7 +36,7 @@ resource "aws_launch_template" "launch_template" {
     DOCDB_ENDPOINT         = var.DOCDB_ENDPOINT
     DOCDB_USER             = jsondecode(data.aws_secretsmanager_secret_version.secret.secret_string)["DOCDB_USER"]
     DOCDB_PASS             = jsondecode(data.aws_secretsmanager_secret_version.secret.secret_string)["DOCDB_PASS"]
-    RABBITMQ_USER_PASSWORD = jsondecode(data.aws_secretsmanager_secret_version.secret.secret_string)["RABBITMQ_USER_PASSWORD"]
+    RABBITMQ_USER_PASSWORD = jsondecode(data.aws_secretsmanager_secret_version.secret.secret_string)["RABITMQ_USER_PASSWORD"]
     MYSQL_ENDPOINT         = var.MYSQL_ENDPOINT
     REDDIS_ENDPOINT        = var.REDDIS_ENDPOINT
   }))
